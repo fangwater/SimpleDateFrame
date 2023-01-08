@@ -1,0 +1,1 @@
+/opt/intel/oneapi/compiler/2023.0.0/linux/bin/icpx  -fsycl   -fsycl  CMakeFiles/simple.dir/test.cc.o -o simple 

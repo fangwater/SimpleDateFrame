@@ -81,4 +81,71 @@ max()/min()/last()/first()
 concat()
 
 
+df.reindex(index=[date])
+等价选择
+
+这里存在一个前提 输入的`index`和需要检索的`col`一定是一个类型
+因此在df保存一个string index
+
+
+df.reindex(col<T> = [])
+
+### DateFrameWithType
+```c++
+col<int> operator[](std::string){
+
+}
+
+auto c = df["date"];
+enum x{
+    std::string
+    int
+    Civilsecond
+    Civ
+    Duration
+}
+
+unordered_hashmap["name"] = x;
+using type_of_col = hashmap; 
+if(x == st) {
+    ty
+}else if
+
+return 
+
+```
+
+
+
+
+
+
+```c++
+
+```
+
+
+`Series`的`reindex`方法
+```python
+obj = Series([4.5, 7.2, -5.3, 3.6], index = ['d', 'b', 'a', 'c'])
+obj2 = obj.reindex(['a', 'b', 'c', 'd', 'e'])
+obj2
+输出：a   -5.3
+b    7.2
+c    3.6
+d    4.5
+e    NaN
+dtype: float64
+```
+此时可以看到
+- [1] `index`可以理解为一个列，但列的元素没有重复, 列的程度和表长度一致
+- [2] `reindex`在`Series`同样要输入一串没有重复的列，但列的长度可以大于也可以小于表的长度
+  
+综合看可以理解为
+```python
+pd.read_parquet(f'./hfq_multi.parquet').reindex(index=[date])
+```
+
+```
+
 

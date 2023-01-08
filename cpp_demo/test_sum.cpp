@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <execution>
 class A{
 public:
     template<typename Y>void operator[](Y const&){
@@ -53,12 +54,24 @@ void A::operator[]<int>(int const&){
     
 // };
 
+inline bool apply_and(bool a, bool b){
+    return a && b;
+}
 
 int main()
 {
-    A a;
-    a["123"];
-    B<int> b;
-    b<double>["123"];
+    int a[] = {0,1};
+    std::vector<int> v(2);
+    std::for_each(std::execution::par, std::begin(a), std::end(a), [&](int i) {
+        v[i] = i+100; 
+    });
+    std::vector<bool> v1{0,1,1,1,1,1};
+    std::vector<bool> v2{1,1,1,1,1,0};
+    auto result = std::vector<bool>(v1.size());
+    std::transform(std::execution::par_unseq,v1.begin(),v1.end(),v2.begin(),result.begin(),[](bool a,bool b){ return a&&b; });
+    std::cout << std::boolalpha;
+    for(auto x: result){
+        std::cout << x << std::endl;
+    }
     return 0;
 }
